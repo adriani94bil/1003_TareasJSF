@@ -18,12 +18,11 @@ import javax.faces.context.FacesContext;
  *
  * @author user
  */
-@Named(value = "alta-tareaMB")
+@Named(value = "altaTareaMB")
 @RequestScoped
 public class AltaTareaManagedBean {
 
     private Tarea tarea;
-    private int idUser;
     
     public AltaTareaManagedBean() {
         this.tarea=new Tarea();
@@ -37,13 +36,8 @@ public class AltaTareaManagedBean {
         this.tarea = tarea;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
 
-    public int getIdUser() {
-        return idUser;
-    }
+    
     //Logger
     
     private Logger log=Logger.getLogger("AltaTareaManagedBean");
@@ -54,7 +48,7 @@ public class AltaTareaManagedBean {
         TareasService tareaService=new TareasService();
         FacesContext ctx=FacesContext.getCurrentInstance();
         try {
-            tareaService.altaTarea(tarea, idUser);
+            tareaService.altaTarea(tarea, tarea.getIdUsuario());
             log.info("Alta libro OK");
             FacesMessage msg= new FacesMessage("Alta libro ok");
             ctx.addMessage(null, msg);

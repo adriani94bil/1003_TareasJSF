@@ -8,10 +8,7 @@ package com.tarea.model;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- *
- * @author user
- */
+
 public class Tarea implements Serializable {
     private int idTarea;
     private String Descripcion;

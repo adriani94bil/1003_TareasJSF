@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
     <body>
 
@@ -14,11 +15,13 @@
             <ui:define name="content">
                 <h4>Nueva Tarea</h4>
                 <h:form id="formAltaTarea">
-                    Descripcion:<h:inputText value="#{alta-tareaMB.tarea.descripcion}"/>
+                    Id:<h:inputText value="#{altaTareaMB.tarea.idTarea}"/>
                     <br/>
-                    <h:inputText id="hiddenField" value="#{alta-tareaMB}"/>
+                    Descripcion:<h:inputText value="#{altaTareaMB.tarea.descripcion}"/>
                     <br/>
-                    <h:commandButton value="Guardar" action="" />
+                    IdUser:<h:inputText value="#{altaTareaMB.tarea.idUsuario}"/>
+                    <br/>
+                    <h:commandButton value="Guardar" id="alta" action="#{altaTareaMB.altaTarea()}" />
                 </h:form>
             </ui:define>
 

@@ -6,6 +6,7 @@
 package com.tarea.MB;
 
 import com.tarea.excepcion.LoginException;
+import com.tarea.model.Usuario;
 import com.tarea.servicios.LoginService;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -25,7 +26,7 @@ import javax.servlet.http.HttpSession;
 public class UsuarioManagedBean implements Serializable {
     private String email;
     private String clave;
-    
+    private LoginService loginService=new LoginService();
     
     
             
@@ -50,14 +51,21 @@ public class UsuarioManagedBean implements Serializable {
     public void setUser(String user) {
         this.email = user;
     }
+
+    public LoginService getLoginService() {
+        return loginService;
+    }
+
+    public void setLoginService(LoginService loginService) {
+        this.loginService = loginService;
+    }
     
     
     public String login(){
-        LoginService loginService= new LoginService();
         FacesContext ctx=FacesContext.getCurrentInstance();
         try {
             loginService.login(email, clave, (HttpSession) ctx.getExternalContext().getSession(true));
-            return "tareas";
+            return "index";
         } catch (LoginException ex) {
             Logger.getLogger(UsuarioManagedBean.class.getName()).log(Level.SEVERE, null, ex);
             this.email="";

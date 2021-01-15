@@ -15,27 +15,9 @@ import java.util.Collection;
  */
 public class DB {
     private static ArrayList<Usuario> listaUsuario;
-    private static int ultimoIdTarea=0;
-    private static int ultimoIdUsuario=0;
-
-    public static int getUltimoIdTarea() {
-        return ultimoIdTarea;
-    }
-
-    public static void setUltimoIdTarea(int ultimoIdTarea) {
-        DB.ultimoIdTarea = ultimoIdTarea;
-    }
 
     public static ArrayList<Usuario> getListaUsuario() {
         return listaUsuario;
-    }
-
-    public static int getUltimoIdUsuario() {
-        return ultimoIdUsuario;
-    }
-
-    public static void setUltimoIdUsuario(int ultimoIdusuario) {
-        DB.ultimoIdUsuario = ultimoIdusuario;
     }
     
     
@@ -70,8 +52,6 @@ public class DB {
     //Añadir Tarea
     public static synchronized void addTarea (Tarea t, int idUser) throws DBException{
         Usuario user=DB.getUser(idUser);
-        int idTarea=++ultimoIdTarea;
-        t.setIdTarea(idTarea);
         user.addTarea(t);
     }
     //Modificar tarea
@@ -87,19 +67,19 @@ public class DB {
     
     static{
         listaUsuario=new ArrayList<Usuario>();
-        listaUsuario.add(new Usuario(++ultimoIdUsuario,"a@ruiz.es","1","adrian","ruiz"));
-        listaUsuario.add(new Usuario(++ultimoIdUsuario,"ton@ton.es","1","ser","top"));
-        listaUsuario.add(new Usuario(++ultimoIdUsuario,"ser@serz.es","1","ru","ghuo"));
+        listaUsuario.add(new Usuario(1,"a@ruiz.es","1","adrian","ruiz"));
+        listaUsuario.add(new Usuario(2,"ton@ton.es","1","ser","top"));
+        listaUsuario.add(new Usuario(3,"ser@serz.es","1","ru","ghuo"));
         
         //Añado a cada usuario dos tareas
-        listaUsuario.get(0).addTarea(new Tarea(++ultimoIdTarea, "Application JAVA", Estado.TODO, listaUsuario.get(0).getId()));
-        listaUsuario.get(0).addTarea(new Tarea(++ultimoIdTarea, "Application MVC con conexion DB", Estado.TODO, listaUsuario.get(0).getId()));
-        listaUsuario.get(0).addTarea(new Tarea(++ultimoIdTarea, "Leer a Escohotado", Estado.INPROGRESS, listaUsuario.get(0).getId()));
-        listaUsuario.get(0).addTarea(new Tarea(++ultimoIdTarea, "Hacer la compra de navidad", Estado.INPROGRESS, listaUsuario.get(0).getId()));
-        listaUsuario.get(1).addTarea(new Tarea(++ultimoIdTarea, "Levantar pesas", Estado.TODO, listaUsuario.get(1).getId()));
-        listaUsuario.get(1).addTarea(new Tarea(++ultimoIdTarea, "Comer pollo y arroz", Estado.TODO, listaUsuario.get(1).getId()));
-        listaUsuario.get(2).addTarea(new Tarea(++ultimoIdTarea, "Import-Export", Estado.TODO, listaUsuario.get(2).getId()));
-        listaUsuario.get(2).addTarea(new Tarea(++ultimoIdTarea, "Leer el quijote", Estado.TODO, listaUsuario.get(2).getId()));
+        listaUsuario.get(0).addTarea(new Tarea(1, "Application JAVA", Estado.TODO, listaUsuario.get(0).getId()));
+        listaUsuario.get(0).addTarea(new Tarea(2, "Application MVC con conexion DB", Estado.TODO, listaUsuario.get(0).getId()));
+        listaUsuario.get(0).addTarea(new Tarea(3, "Leer a Escohotado", Estado.INPROGRESS, listaUsuario.get(0).getId()));
+        listaUsuario.get(0).addTarea(new Tarea(4, "Hacer la compra de navidad", Estado.INPROGRESS, listaUsuario.get(0).getId()));
+        listaUsuario.get(1).addTarea(new Tarea(5, "Levantar pesas", Estado.TODO, listaUsuario.get(1).getId()));
+        listaUsuario.get(1).addTarea(new Tarea(6, "Comer pollo y arroz", Estado.TODO, listaUsuario.get(1).getId()));
+        listaUsuario.get(2).addTarea(new Tarea(7, "Import-Export", Estado.TODO, listaUsuario.get(2).getId()));
+        listaUsuario.get(2).addTarea(new Tarea(8, "Leer el quijote", Estado.TODO, listaUsuario.get(2).getId()));
         
     }
 }

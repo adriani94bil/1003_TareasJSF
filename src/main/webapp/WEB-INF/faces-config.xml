@@ -23,5 +23,32 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
-
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>Ini</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>pathone</from-outcome>
+            <to-view-id>/tareas.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/tareas.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>crear</from-outcome>
+            <to-view-id>/create-tarea.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/create-tarea.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>vueltaLista</from-outcome>
+            <to-view-id>/tareas.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

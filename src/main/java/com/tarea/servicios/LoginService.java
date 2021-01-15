@@ -16,10 +16,12 @@ import javax.servlet.http.HttpSession;
  * @author user
  */
 public class LoginService {
+    //Hacer que me devuleva el usuario
     public void login(String email, String clave,HttpSession session) throws LoginException{
         //Si existe email y clave
         Collection<Usuario> usuarios= DB.getListaUsuario();
         Usuario userEncontrado=null;
+        //Buscamos Usuario
         for (Usuario u:usuarios) {
             if (u.getEmail().equals(email)) {
                 userEncontrado=u;
@@ -43,4 +45,5 @@ public class LoginService {
     public void logout(HttpSession session){
         session.invalidate();
     }
+
 }

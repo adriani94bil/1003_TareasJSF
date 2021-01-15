@@ -29,4 +29,16 @@ public class TareasService {
     public Usuario getUserById(int id){
         return DB.getUser(id);
     }
+    public int getUserIdByEmail(String email){
+        Collection<Usuario> usuarios= DB.getListaUsuario();
+        Usuario userEncontrado=null;
+        //Buscamos Usuario
+        for (Usuario u:usuarios) {
+            if (u.getEmail().equals(email)) {
+                userEncontrado=u;
+                break;
+            }
+        }
+        return userEncontrado.getId();
+    }
 }
