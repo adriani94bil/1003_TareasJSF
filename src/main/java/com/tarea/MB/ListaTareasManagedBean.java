@@ -6,6 +6,7 @@
 package com.tarea.MB;
 
 import com.tarea.model.Tarea;
+import com.tarea.model.Usuario;
 import com.tarea.servicios.TareasService;
 import java.util.Collection;
 import javax.inject.Named;
@@ -26,11 +27,11 @@ public class ListaTareasManagedBean {
     @Inject
     private UsuarioManagedBean usuarioMB;
     
-    private int idUser;
+    private Usuario usuarioLogeado;
     
     public ListaTareasManagedBean() {
-        this.idUser=tareaServicio.getUserIdByEmail(usuarioMB.getUser());
-        this.listaTareas=tareaServicio.getTareasByUser(idUser);
+        this.usuarioLogeado=usuarioMB.getUsuarioKeep();
+        this.listaTareas=tareaServicio.getTareasByUser(usuarioLogeado.getId());
     }
 
     public Collection<Tarea> getListaTareas() {
@@ -49,13 +50,14 @@ public class ListaTareasManagedBean {
         this.tareaServicio = tareaServicio;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public Usuario getUsuarioLogeado() {
+        return usuarioLogeado;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
     }
+    
 
     public Tarea getTareaSeleccionada() {
         return tareaSeleccionada;

@@ -30,6 +30,9 @@ public class Usuario implements Serializable{
         this.listaTareas=new ArrayList<Tarea>();
     }
 
+    public Usuario() {
+    }
+    
     public Integer getId() {
         return id;
     }

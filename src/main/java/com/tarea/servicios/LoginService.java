@@ -45,5 +45,17 @@ public class LoginService {
     public void logout(HttpSession session){
         session.invalidate();
     }
-
+    public Usuario getUserByEmail(String email){
+        //Si existe email y clave
+        Collection<Usuario> usuarios= DB.getListaUsuario();
+        Usuario userEncontrado=null;
+        //Buscamos Usuario
+        for (Usuario u:usuarios) {
+            if (u.getEmail().equals(email)) {
+                userEncontrado=u;
+                break;
+            }
+        }
+        return userEncontrado;
+    }
 }

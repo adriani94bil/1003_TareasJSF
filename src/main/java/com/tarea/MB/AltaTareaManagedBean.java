@@ -26,6 +26,7 @@ public class AltaTareaManagedBean {
     
     public AltaTareaManagedBean() {
         this.tarea=new Tarea();
+        tarea.setEstado(Estado.TODO);
     }
 
     public Tarea getTarea() {
@@ -52,7 +53,7 @@ public class AltaTareaManagedBean {
             log.info("Alta libro OK");
             FacesMessage msg= new FacesMessage("Alta libro ok");
             ctx.addMessage(null, msg);
-            return "tareas";
+            return "index";
         } catch (DBException ex) {
             log.severe("No dio de alta libro. "+ex.getMessage());
             FacesMessage msg= new FacesMessage("Fallo lata libro.  "+ex.getMessage());
