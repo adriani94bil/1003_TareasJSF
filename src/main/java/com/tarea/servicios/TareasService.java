@@ -7,6 +7,7 @@ package com.tarea.servicios;
 
 import com.tarea.excepcion.DBException;
 import com.tarea.model.*;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -22,6 +23,33 @@ public class TareasService {
     }
     public Collection<Tarea> getTareasByUser(int id){
         return DB.getListaTareaUser(id);
+    }
+    public Collection<Tarea> getTareasByUserToDo(Collection<Tarea> listaTareas){
+        Collection<Tarea> listaTareasEst=new ArrayList<Tarea>();
+        for (Tarea t:listaTareas){
+            if (t.getEstado()==Estado.TODO) {
+                listaTareasEst.add(t);
+            }
+        }
+        return listaTareasEst;
+    }
+    public Collection<Tarea> getTareasByUserInProgress(Collection<Tarea> listaTareas){
+        Collection<Tarea> listaTareasEst=new ArrayList<Tarea>();
+        for (Tarea t:listaTareas){
+            if (t.getEstado()==Estado.INPROGRESS) {
+                listaTareasEst.add(t);
+            }
+        }
+        return listaTareasEst;
+    }
+    public Collection<Tarea> getTareasByUserDone(Collection<Tarea> listaTareas){
+        Collection<Tarea> listaTareasEst=new ArrayList<Tarea>();
+        for (Tarea t:listaTareas){
+            if (t.getEstado()==Estado.DONE) {
+                listaTareasEst.add(t);
+            }
+        }
+        return listaTareasEst;
     }
     public void setEstadoTarea(int idUsuario,int idTarea, Estado est){
         DB.setEstadoTarea(idUsuario, idTarea, est);

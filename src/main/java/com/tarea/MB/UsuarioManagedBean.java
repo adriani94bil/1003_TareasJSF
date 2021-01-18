@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
 public class UsuarioManagedBean implements Serializable {
     private String email;
     private String clave;
-    private Usuario usuarioKeep;
+    private Usuario usuarioLog;
     private LoginService loginService=new LoginService();
     
     
@@ -35,7 +35,7 @@ public class UsuarioManagedBean implements Serializable {
      * Creates a new instance of UsuarioManagedBean
      */
     public UsuarioManagedBean() {
-        this.usuarioKeep=new Usuario();
+        this.usuarioLog=new Usuario();
     }
 
     public String getClave() {
@@ -62,12 +62,12 @@ public class UsuarioManagedBean implements Serializable {
         this.loginService = loginService;
     }
 
-    public Usuario getUsuarioKeep() {
-        return usuarioKeep;
+    public Usuario getUsuarioLog() {
+        return usuarioLog;
     }
 
-    public void setUsuarioKeep(Usuario usuarioKeep) {
-        this.usuarioKeep = usuarioKeep;
+    public void setUsuarioLog(Usuario usuarioLog) {
+        this.usuarioLog = usuarioLog;
     }
     
     
@@ -76,7 +76,7 @@ public class UsuarioManagedBean implements Serializable {
         try {
             
             loginService.login(email, clave, (HttpSession) ctx.getExternalContext().getSession(true));
-            usuarioKeep=loginService.getUserByEmail(email);
+            usuarioLog=loginService.getUserByEmail(email);
             return "index";
         } catch (LoginException ex) {
             Logger.getLogger(UsuarioManagedBean.class.getName()).log(Level.SEVERE, null, ex);

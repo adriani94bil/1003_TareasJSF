@@ -9,6 +9,7 @@ import com.tarea.model.Tarea;
 import com.tarea.model.Usuario;
 import com.tarea.servicios.TareasService;
 import java.util.Collection;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -22,6 +23,9 @@ import javax.inject.Inject;
 public class ListaTareasManagedBean {
 
     private Collection<Tarea> listaTareas;
+    private Collection<Tarea> listaTareasToDo;
+    private Collection<Tarea> listaTareasIn;
+    private Collection<Tarea> listaTareasDone;
     private TareasService tareaServicio= new TareasService();
     private Tarea tareaSeleccionada;
     @Inject
@@ -30,8 +34,18 @@ public class ListaTareasManagedBean {
     private Usuario usuarioLogeado;
     
     public ListaTareasManagedBean() {
-        this.usuarioLogeado=usuarioMB.getUsuarioKeep();
+        
+    }
+    
+    //Sin el postconstruct las dependencias no van bien
+    @PostConstruct
+    public void iniciar(){
+        this.usuarioLogeado=usuarioMB.getUsuarioLog();
         this.listaTareas=tareaServicio.getTareasByUser(usuarioLogeado.getId());
+        this.listaTareasToDo=tareaServicio.getTareasByUserToDo(listaTareas);
+        this.listaTareasIn=tareaServicio.getTareasByUserInProgress(listaTareas);
+        this.listaTareasDone=tareaServicio.getTareasByUserDone(listaTareas);
+        
     }
 
     public Collection<Tarea> getListaTareas() {
@@ -66,6 +80,32 @@ public class ListaTareasManagedBean {
     public void setTareaSeleccionada(Tarea tareaSeleccionada) {
         this.tareaSeleccionada = tareaSeleccionada;
     }
+
+    public Collection<Tarea> getListaTareasToDo() {
+        return listaTareasToDo;
+    }
+
+    public void setListaTareasToDo(Collection<Tarea> listaTareasToDo) {
+        this.listaTareasToDo = listaTareasToDo;
+    }
+
+    public Collection<Tarea> getListaTareasIn() {
+        return listaTareasIn;
+    }
+
+    public void setListaTareasIn(Collection<Tarea> listaTareasIn) {
+        this.listaTareasIn = listaTareasIn;
+    }
+
+    public Collection<Tarea> getListaTareasDone() {
+        return listaTareasDone;
+    }
+
+    public void setListaTareasDone(Collection<Tarea> listaTareasDone) {
+        this.listaTareasDone = listaTareasDone;
+    }
+    
+    
     
     
 }
