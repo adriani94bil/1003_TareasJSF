@@ -5,13 +5,18 @@
  */
 package com.tarea.MB;
 
+import com.tarea.excepcion.DBException;
+import com.tarea.model.Estado;
 import com.tarea.model.Tarea;
 import com.tarea.model.Usuario;
 import com.tarea.servicios.TareasService;
 import java.util.Collection;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 /**
@@ -104,8 +109,23 @@ public class ListaTareasManagedBean {
     public void setListaTareasDone(Collection<Tarea> listaTareasDone) {
         this.listaTareasDone = listaTareasDone;
     }
+    //Logger
     
+    private Logger log=Logger.getLogger("ListaTareasManagedBean");
+    //Acciones
     
-    
-    
+    public String setEstadoTareaToDoInprogress(){
+        FacesContext ctx=FacesContext.getCurrentInstance();
+        try {
+            tareaServicio.setEstadoTarea(usuarioLogeado.getId(), tareaSeleccionada.getIdTarea(), Estado.INPROGRESS);
+            log.info("Tarea Cambiada OK");
+            FacesMessage msg= new FacesMessage("Alta libro ok");
+            ctx.addMessage(null, msg);
+        } catch (DBException ex) {
+            log.severe("No se cambio estado "+ex.getMessage());
+            FacesMessage msg= new FacesMessage("Fallo cambio estado.  "+ex.getMessage());
+            ctx.addMessage(null, msg);
+        }
+        return "tareas";
+    }
 }

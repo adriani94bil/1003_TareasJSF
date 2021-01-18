@@ -51,7 +51,7 @@ public class TareasService {
         }
         return listaTareasEst;
     }
-    public void setEstadoTarea(int idUsuario,int idTarea, Estado est){
+    public void setEstadoTarea (int idUsuario,int idTarea, Estado est) throws DBException{
         DB.setEstadoTarea(idUsuario, idTarea, est);
     }
     public Usuario getUserById(int id){

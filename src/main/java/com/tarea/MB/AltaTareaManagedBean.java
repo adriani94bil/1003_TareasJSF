@@ -50,13 +50,13 @@ public class AltaTareaManagedBean {
         FacesContext ctx=FacesContext.getCurrentInstance();
         try {
             tareaService.altaTarea(tarea, tarea.getIdUsuario());
-            log.info("Alta libro OK");
+            log.info("Alta tarea OK");
             FacesMessage msg= new FacesMessage("Alta libro ok");
             ctx.addMessage(null, msg);
             return "tareas";
         } catch (DBException ex) {
-            log.severe("No dio de alta libro. "+ex.getMessage());
-            FacesMessage msg= new FacesMessage("Fallo lata libro.  "+ex.getMessage());
+            log.severe("No dio de alta la tarea. "+ex.getMessage());
+            FacesMessage msg= new FacesMessage("Fallo alta libro.  "+ex.getMessage());
             ctx.addMessage(null, msg);
             return "create-tarea";
         }

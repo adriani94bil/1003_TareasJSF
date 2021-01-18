@@ -73,8 +73,7 @@ public class UsuarioManagedBean implements Serializable {
     
     public String login(){
         FacesContext ctx=FacesContext.getCurrentInstance();
-        try {
-            
+        try {            
             loginService.login(email, clave, (HttpSession) ctx.getExternalContext().getSession(true));
             usuarioLog=loginService.getUserByEmail(email);
             return "index";
@@ -82,10 +81,9 @@ public class UsuarioManagedBean implements Serializable {
             Logger.getLogger(UsuarioManagedBean.class.getName()).log(Level.SEVERE, null, ex);
             this.email="";
             this.clave="";
-            
             FacesMessage msg=new FacesMessage(ex.getMessage());
             ctx.addMessage(null, msg);
-            return "login";
+            return "login?faces-redirect=true";
         }
     }
     public String logout(){

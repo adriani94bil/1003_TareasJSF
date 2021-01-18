@@ -14,14 +14,14 @@
             </ui:define>
 
             <ui:define name="content">
-                <div class="container-fluid" style="margin-top: 30px">
-                    <div class="row justify-content-center">
+                <div >
+                    <div class="p-grid p-justify-center">
                         <h:link outcome="create-tarea">
-                            <img src="https://www.flaticon.es/svg/static/icons/svg/1368/1368593.svg" class="rounded" style="width: 50px; height: 50px" alt="Fallo"/>
+                            <img src="https://www.flaticon.es/svg/static/icons/svg/1368/1368593.svg"  style="width: 50px; height: 50px" alt="Fallo"/>
                         </h:link>
                     </div>
-                    <div class="row justify-content-around">
-                        <div class="col-4-align-self-center" style="margin-top: 30px">
+                    <div class="p-grid">
+                        <div class="p-col-4" style="margin-top: 30px">
                             <h:form id="formToDo">
                                 <p:dataTable id="tablaToDo" var="tareaDo" value="#{listaTareasMB.listaTareasToDo}" selectionMode="single" selection="#{listaTareasMB.tareaSeleccionada}" rowKey="#{tareaDo.idTarea}">
                                     <f:facet name="header">
@@ -29,13 +29,15 @@
                                     <p:column headerText="TO DO">
                                         <h:outputText value="#{tareaDo.descripcion}" />
                                     </p:column>
-            <!--                        <f:facet name="footer">
-                                        <p:commandButton process="singleDT" update=":form:carDetail" icon="pi pi-search" value="View" oncomplete="PF('carDialog').show()" />
-                                    </f:facet>-->
+                                    <p:column style="width: 32px;">
+                                        <p:commandButton update="" oncomplete="" icon="pi pi-search" title="E">
+                                            <f:setPropertyActionListener value="#{tareaDo}" target="#{listaTareasMB.tareaSeleccionada}" />
+                                       </p:commandButton>
+                                   </p:column>
                                 </p:dataTable>
                             </h:form>
                         </div>
-                        <div class="col-4-align-self-center" style="margin-top: 30px">
+                        <div class="p-col-4" style="margin-top: 30px">
                             <h:form id="tablaInProgress">
                                 <p:dataTable id="tablaInProgress" var="tareaIn" value="#{listaTareasMB.listaTareasIn}" selectionMode="single" selection="#{listaTareasMB.tareaSeleccionada}" rowKey="#{tareaIn.idTarea}">
                                     <f:facet name="header">
@@ -43,13 +45,15 @@
                                     <p:column headerText="IN PROGRESS">
                                         <h:outputText value="#{tareaIn.descripcion}" />
                                     </p:column>
-            <!--                        <f:facet name="footer">
-                                        <p:commandButton process="singleDT" update=":form:carDetail" icon="pi pi-search" value="View" oncomplete="PF('carDialog').show()" />
-                                    </f:facet>-->
+                                    <p:column style="width: 32px;">
+                                        <p:commandButton update="" oncomplete="" icon="pi pi-search" title="E">
+                                            <f:setPropertyActionListener value="#{tareaIn}" target="#{listaTareasMB.tareaSeleccionada}" />
+                                       </p:commandButton>
+                                   </p:column>
                                 </p:dataTable>
                             </h:form>
                         </div>
-                        <div class="col-4-align-self-center" style="margin-top: 30px">
+                        <div class="p-col-4" style="margin-top: 30px">
                             <h:form id="tablaDone">
                                 <p:dataTable id="tablaDone" var="tareaDone" value="#{listaTareasMB.listaTareasDone}" selectionMode="single" selection="#{listaTareasMB.tareaSeleccionada}" rowKey="#{tareaDone.idTarea}">
                                     <f:facet name="header">
@@ -57,9 +61,11 @@
                                     <p:column headerText="DONE">
                                         <h:outputText value="#{tareaDone.descripcion}" />
                                     </p:column>
-            <!--                        <f:facet name="footer">
-                                        <p:commandButton process="singleDT" update=":form:carDetail" icon="pi pi-search" value="View" oncomplete="PF('carDialog').show()" />
-                                    </f:facet>-->
+                                    <p:column style="width: 32px;">
+                                        <p:commandButton update="" oncomplete="" icon="pi pi-search" title="E">
+                                            <f:setPropertyActionListener value="#{tareaDo}" target="#{listaTareasMB.tareaSeleccionada}" />
+                                       </p:commandButton>
+                                   </p:column>
                                 </p:dataTable>
                             </h:form>
                         </div>
