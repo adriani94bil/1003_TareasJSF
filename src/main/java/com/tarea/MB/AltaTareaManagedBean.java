@@ -9,10 +9,12 @@ import com.tarea.excepcion.*;
 import com.tarea.model.*;
 import com.tarea.servicios.*;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -23,12 +25,23 @@ import javax.faces.context.FacesContext;
 public class AltaTareaManagedBean {
 
     private Tarea tarea;
+    @Inject
+    private UsuarioManagedBean usuarioMB;
+    
+    private Usuario usuarioLogeado;
+    
+    
     
     public AltaTareaManagedBean() {
+        
+    }
+    @PostConstruct
+    public void iniciar(){
+        this.usuarioLogeado=usuarioMB.getUsuarioLog();
         this.tarea=new Tarea();
         tarea.setEstado(Estado.TODO);
+        
     }
-
     public Tarea getTarea() {
         return tarea;
     }
@@ -37,7 +50,15 @@ public class AltaTareaManagedBean {
         this.tarea = tarea;
     }
 
+    public Usuario getUsuarioLogeado() {
+        return usuarioLogeado;
+    }
 
+    public void setUsuarioLogeado(Usuario usuarioLogeado) {
+        this.usuarioLogeado = usuarioLogeado;
+    }
+    
+    
     
     //Logger
     

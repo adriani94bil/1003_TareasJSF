@@ -29,9 +29,10 @@
                                     <p:column headerText="TO DO">
                                         <h:outputText value="#{tareaDo.descripcion}" />
                                     </p:column>
-                                    <p:column style="width: 32px;">
-                                        <p:commandButton update="" oncomplete="" icon="pi pi-search" title="E">
+                                    <p:column style="width: 60px;">
+                                        <p:commandButton id="btnToDoIn" action="#{listaTareasMB.setEstadoTareaToDoInprogress()}" oncomplete="" icon="leftbtn">
                                             <f:setPropertyActionListener value="#{tareaDo}" target="#{listaTareasMB.tareaSeleccionada}" />
+                                            <f:ajax event="click" execute="@form" render="tablaToDo tablaInProgress:tablaInProgress"/>
                                        </p:commandButton>
                                    </p:column>
                                 </p:dataTable>
@@ -42,12 +43,19 @@
                                 <p:dataTable id="tablaInProgress" var="tareaIn" value="#{listaTareasMB.listaTareasIn}" selectionMode="single" selection="#{listaTareasMB.tareaSeleccionada}" rowKey="#{tareaIn.idTarea}">
                                     <f:facet name="header">
                                     </f:facet>
+                                    <p:column style="width: 60px;">
+                                        <p:commandButton action="#{listaTareasMB.setEstadoTareaInprogressToDo()}" oncomplete="" icon="leftbtn">
+                                            <f:setPropertyActionListener value="#{tareaIn}" target="#{listaTareasMB.tareaSeleccionada}" />
+                                            <f:ajax event="click" execute="@form" render="tablaToDo:tablaToDo tablaInProgress"/>
+                                       </p:commandButton>
+                                   </p:column>
                                     <p:column headerText="IN PROGRESS">
                                         <h:outputText value="#{tareaIn.descripcion}" />
                                     </p:column>
-                                    <p:column style="width: 32px;">
-                                        <p:commandButton update="" oncomplete="" icon="pi pi-search" title="E">
+                                    <p:column style="width: 60px;">
+                                        <p:commandButton action="#{listaTareasMB.setEstadoTareaInprogressDone()}" oncomplete="" icon="rightbtn" >
                                             <f:setPropertyActionListener value="#{tareaIn}" target="#{listaTareasMB.tareaSeleccionada}" />
+                                            <f:ajax event="click" execute="@form" render="tablaDone:tablaDone tablaInProgress"/>
                                        </p:commandButton>
                                    </p:column>
                                 </p:dataTable>
@@ -58,14 +66,15 @@
                                 <p:dataTable id="tablaDone" var="tareaDone" value="#{listaTareasMB.listaTareasDone}" selectionMode="single" selection="#{listaTareasMB.tareaSeleccionada}" rowKey="#{tareaDone.idTarea}">
                                     <f:facet name="header">
                                     </f:facet>
+                                    <p:column style="width: 60px;">
+                                        <p:commandButton action="#{listaTareasMB.setEstadoTareaToDoInprogress()}" oncomplete="" image="leftbtn">
+                                            <f:setPropertyActionListener value="#{tareaDone}" target="#{listaTareasMB.tareaSeleccionada}" />
+                                            <f:ajax event="click" execute="@form" render="tablaDone tablaInProgress:tablaInProgress"/>
+                                       </p:commandButton>
+                                   </p:column>
                                     <p:column headerText="DONE">
                                         <h:outputText value="#{tareaDone.descripcion}" />
                                     </p:column>
-                                    <p:column style="width: 32px;">
-                                        <p:commandButton update="" oncomplete="" icon="pi pi-search" title="E">
-                                            <f:setPropertyActionListener value="#{tareaDo}" target="#{listaTareasMB.tareaSeleccionada}" />
-                                       </p:commandButton>
-                                   </p:column>
                                 </p:dataTable>
                             </h:form>
                         </div>

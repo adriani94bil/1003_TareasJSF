@@ -25,3 +25,9 @@ a:link:hover, a:visited:hover  {
   font-weight : bold;
   text-decoration : underline;
 }
+.leftbtn{
+    background-image: url("https://www.flaticon.es/svg/static/icons/svg/592/592275.svg");
+}
+.rightbtn{
+    background-image: url("https://www.flaticon.es/svg/static/icons/svg/702/702132.svg");
+}

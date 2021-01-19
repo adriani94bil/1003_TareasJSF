@@ -126,6 +126,34 @@ public class ListaTareasManagedBean {
             FacesMessage msg= new FacesMessage("Fallo cambio estado.  "+ex.getMessage());
             ctx.addMessage(null, msg);
         }
-        return "tareas";
+        return "tareas?faces-redirect=true";
+    }
+    public String setEstadoTareaInprogressToDo(){
+        FacesContext ctx=FacesContext.getCurrentInstance();
+        try {
+            tareaServicio.setEstadoTarea(usuarioLogeado.getId(), tareaSeleccionada.getIdTarea(), Estado.TODO);
+            log.info("Tarea Cambiada OK");
+            FacesMessage msg= new FacesMessage("Alta libro ok");
+            ctx.addMessage(null, msg);
+        } catch (DBException ex) {
+            log.severe("No se cambio estado "+ex.getMessage());
+            FacesMessage msg= new FacesMessage("Fallo cambio estado.  "+ex.getMessage());
+            ctx.addMessage(null, msg);
+        }
+        return "tareas?faces-redirect=true";
+    }
+    public String setEstadoTareaInprogressDone(){
+        FacesContext ctx=FacesContext.getCurrentInstance();
+        try {
+            tareaServicio.setEstadoTarea(usuarioLogeado.getId(), tareaSeleccionada.getIdTarea(), Estado.DONE);
+            log.info("Tarea Cambiada OK");
+            FacesMessage msg= new FacesMessage("Alta libro ok");
+            ctx.addMessage(null, msg);
+        } catch (DBException ex) {
+            log.severe("No se cambio estado "+ex.getMessage());
+            FacesMessage msg= new FacesMessage("Fallo cambio estado.  "+ex.getMessage());
+            ctx.addMessage(null, msg);
+        }
+        return "tareas?faces-redirect=true";
     }
 }

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
 
     <body>
 
@@ -19,7 +20,7 @@
                     <br/>
                     Descripcion:<h:inputText value="#{altaTareaMB.tarea.descripcion}"/>
                     <br/>
-                    IdUser:<h:inputText value="#{altaTareaMB.tarea.idUsuario}"/>
+                    IdUser:<h:inputText id="userId" value="#{altaTareaMB.tarea.idUsuario}"/>
                     <br/>
                     <h:commandButton value="Guardar" id="alta" action="#{altaTareaMB.altaTarea()}" />
                 </h:form>
