@@ -51,4 +51,16 @@
             <to-view-id>/tareas.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
+    <application>
+        <resource-bundle>
+            <base-name>com.tarea.recursos.textos</base-name>
+            <var>textos</var>  
+        </resource-bundle>
+        <locale-config>
+            <default-locale>es</default-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+        <message-bundle>com.tarea.recursos.mensajes</message-bundle>
+    </application>
 </faces-config>

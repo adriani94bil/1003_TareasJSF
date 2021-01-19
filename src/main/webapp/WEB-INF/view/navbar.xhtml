@@ -20,13 +20,13 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <h:panelGroup rendered="#{usuarioMB.user!=null}">
                           <li class="nav-item">
-                              <h:link class="nav-link" outcome="index">Tarifas</h:link>
+                              <h:link class="nav-link" outcome="index">#{textos.index}</h:link>
                           </li>
                           <li class="nav-item">
-                              <h:link class="nav-link" outcome="tareas">Mis Tareas</h:link>
+                              <h:link class="nav-link" outcome="tareas">#{textos.TaskList}</h:link>
                           </li>
                           <li class="nav-item">
-                              <h:link class="nav-link" outcome="create-tarea">Nueva Tarea</h:link>
+                              <h:link class="nav-link" outcome="create-tarea">#{textos.createTask}</h:link>
                           </li>
                           <li class="nav-item" style="margin-left:3px">
                               <h6 class="nav-link">Hola #{usuarioMB.user}</h6>
@@ -36,6 +36,14 @@
                                   <h:commandButton action="#{usuarioMB.logout()}" value="logout" class="nav-link"/>
                               </h:form>
                           </li>
+                          <h:form id="formIdioma">
+                            <li class="nav-item">
+                                <h:commandLink value="ES" action="#{idiomaMB.cambiarIdioma('es')}" />
+                            </li>
+                            <li>
+                                <h:commandLink value="EN"  action="#{idiomaMB.cambiarIdioma('en')}"/>
+                            </li>
+                          </h:form>
                     </h:panelGroup>
                 </ul>
               </div>
