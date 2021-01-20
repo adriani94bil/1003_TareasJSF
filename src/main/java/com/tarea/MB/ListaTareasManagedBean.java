@@ -13,6 +13,7 @@ import com.tarea.servicios.TareasService;
 import java.util.Collection;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -31,8 +32,12 @@ public class ListaTareasManagedBean {
     private Collection<Tarea> listaTareasToDo;
     private Collection<Tarea> listaTareasIn;
     private Collection<Tarea> listaTareasDone;
-    private TareasService tareaServicio= new TareasService();
     private Tarea tareaSeleccionada;
+    
+    @EJB
+    private TareasService tareaServicio;//= new Treas-service();
+    
+    
     @Inject
     private UsuarioManagedBean usuarioMB;
     

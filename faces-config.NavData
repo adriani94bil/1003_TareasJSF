@@ -3,9 +3,9 @@
     <Scope Scope="Faces Configuration Only"/>
     <Scope Scope="Project">
         <Node id="login.xhtml" x="367" y="57" zoom="true"/>
-        <Node id="tareas.xhtml" x="536" y="283" zoom="true"/>
-        <Node id="create-tarea.xhtml" x="44" y="457" zoom="true"/>
         <Node id="index.xhtml" x="360" y="168" zoom="true"/>
+        <Node id="create-tarea.xhtml" x="44" y="457" zoom="true"/>
+        <Node id="tareas.xhtml" x="536" y="283" zoom="true"/>
     </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

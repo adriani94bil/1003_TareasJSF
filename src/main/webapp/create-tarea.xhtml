@@ -14,16 +14,26 @@
             </ui:define>
 
             <ui:define name="content">
-                <h4>Nueva Tarea</h4>
-                <h:form id="formAltaTarea">
-                    Id:<h:inputText value="#{altaTareaMB.tarea.idTarea}"/>
-                    <br/>
-                    Descripcion:<h:inputText value="#{altaTareaMB.tarea.descripcion}"/>
-                    <br/>
-                    IdUser:<h:inputText id="userId" value="#{altaTareaMB.tarea.idUsuario}"/>
-                    <br/>
-                    <h:commandButton value="Guardar" id="alta" action="#{altaTareaMB.altaTarea()}" />
-                </h:form>
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <img src="https://www.flaticon.com/svg/vstatic/svg/762/762686.svg?token=exp=1611144758~hmac=c202314a7b99647160ddf2eb2227e508" alt="" width="90" height="72"> </img>
+                        </div>
+                        <div class="col-4">
+                            <h4>Nueva Tarea</h4>
+                            <h:form id="formAltaTarea">
+                                Descripcion:<h:inputText value="#{altaTareaMB.tarea.descripcion}"/>
+                                <br/>
+                                <h:commandButton value="Guardar" id="alta" action="#{altaTareaMB.altaTarea()}" />
+                            </h:form>
+                        </div>
+                        <div class="col-4">
+                            <img src="https://www.flaticon.com/svg/vstatic/svg/762/762686.svg?token=exp=1611144758~hmac=c202314a7b99647160ddf2eb2227e508" alt="" width="90" height="72"> </img>
+                        </div>
+                    </div>
+                    
+                </div>
+                
             </ui:define>
 
         </ui:composition>

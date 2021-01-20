@@ -9,13 +9,23 @@ import com.tarea.excepcion.DBException;
 import com.tarea.excepcion.LoginException;
 import com.tarea.model.*;
 import java.util.Collection;
+import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author user
- */
+@Stateless
 public class RegisterService {
+    
+    public RegisterService(){
+        
+    }
+    
+    @PostConstruct
+    public void iniciarRegistro(){
+        
+    }
+    
+    
     public void register(Usuario u, HttpSession session) throws LoginException, DBException{
         //Si existe email y clave
         Collection<Usuario> usuarios= DB.getListaUsuario();

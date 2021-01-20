@@ -9,14 +9,22 @@ import com.tarea.excepcion.LoginException;
 import com.tarea.model.DB;
 import com.tarea.model.Usuario;
 import java.util.Collection;
+import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author user
- */
+@Stateless
 public class LoginService {
-    //Hacer que me devuleva el usuario
+    
+    public LoginService(){
+        
+    }
+    @PostConstruct
+    public void iniciar(){
+        
+    }
+    
+    
     public void login(String email, String clave,HttpSession session) throws LoginException{
         //Si existe email y clave
         Collection<Usuario> usuarios= DB.getListaUsuario();

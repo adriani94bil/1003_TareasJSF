@@ -13,6 +13,8 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -27,14 +29,15 @@ public class UsuarioManagedBean implements Serializable {
     private String email;
     private String clave;
     private Usuario usuarioLog;
-    private LoginService loginService=new LoginService();
     
+    @EJB
+    private LoginService loginService;
     
-            
-    /**
-     * Creates a new instance of UsuarioManagedBean
-     */
     public UsuarioManagedBean() {
+        
+    }
+    @PostConstruct
+    public void iniciarLogin(){
         this.usuarioLog=new Usuario();
     }
 
@@ -83,7 +86,7 @@ public class UsuarioManagedBean implements Serializable {
             this.clave="";
             FacesMessage msg=new FacesMessage(ex.getMessage());
             ctx.addMessage(null, msg);
-            return "login?faces-redirect=true";
+            return "login";
         }
     }
     public String logout(){

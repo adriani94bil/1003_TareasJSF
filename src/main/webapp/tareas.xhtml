@@ -14,14 +14,14 @@
             </ui:define>
 
             <ui:define name="content">
-                <div >
-                    <div class="p-grid p-justify-center">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
                         <h:link outcome="create-tarea">
                             <img src="https://www.flaticon.es/svg/static/icons/svg/1368/1368593.svg"  style="width: 50px; height: 50px" alt="Fallo"/>
                         </h:link>
                     </div>
-                    <div class="p-grid">
-                        <div class="p-col-4" style="margin-top: 30px">
+                    <div class="row justify-content-center">  
+                        <div  class="col-4" style="margin-top: 30px">
                             <h:form id="formToDo">
                                 <p:dataTable id="tablaToDo" var="tareaDo" value="#{listaTareasMB.listaTareasToDo}" selectionMode="single" selection="#{listaTareasMB.tareaSeleccionada}" rowKey="#{tareaDo.idTarea}">
                                     <f:facet name="header">
@@ -38,46 +38,46 @@
                                 </p:dataTable>
                             </h:form>
                         </div>
-                        <div class="p-col-4" style="margin-top: 30px">
-                            <h:form id="tablaInProgress">
-                                <p:dataTable id="tablaInProgress" var="tareaIn" value="#{listaTareasMB.listaTareasIn}" selectionMode="single" selection="#{listaTareasMB.tareaSeleccionada}" rowKey="#{tareaIn.idTarea}">
-                                    <f:facet name="header">
-                                    </f:facet>
-                                    <p:column style="width: 60px;">
-                                        <p:commandButton action="#{listaTareasMB.setEstadoTareaInprogressToDo()}" oncomplete="" icon="leftbtn">
-                                            <f:setPropertyActionListener value="#{tareaIn}" target="#{listaTareasMB.tareaSeleccionada}" />
-                                            <f:ajax event="click" execute="@form" render="tablaToDo:tablaToDo tablaInProgress"/>
-                                       </p:commandButton>
-                                   </p:column>
-                                    <p:column headerText="IN PROGRESS">
-                                        <h:outputText value="#{tareaIn.descripcion}" />
-                                    </p:column>
-                                    <p:column style="width: 60px;">
-                                        <p:commandButton action="#{listaTareasMB.setEstadoTareaInprogressDone()}" oncomplete="" icon="rightbtn" >
-                                            <f:setPropertyActionListener value="#{tareaIn}" target="#{listaTareasMB.tareaSeleccionada}" />
-                                            <f:ajax event="click" execute="@form" render="tablaDone:tablaDone tablaInProgress"/>
-                                       </p:commandButton>
-                                   </p:column>
-                                </p:dataTable>
-                            </h:form>
-                        </div>
-                        <div class="p-col-4" style="margin-top: 30px">
-                            <h:form id="tablaDone">
-                                <p:dataTable id="tablaDone" var="tareaDone" value="#{listaTareasMB.listaTareasDone}" selectionMode="single" selection="#{listaTareasMB.tareaSeleccionada}" rowKey="#{tareaDone.idTarea}">
-                                    <f:facet name="header">
-                                    </f:facet>
-                                    <p:column style="width: 60px;">
-                                        <p:commandButton action="#{listaTareasMB.setEstadoTareaToDoInprogress()}" oncomplete="" image="leftbtn">
-                                            <f:setPropertyActionListener value="#{tareaDone}" target="#{listaTareasMB.tareaSeleccionada}" />
-                                            <f:ajax event="click" execute="@form" render="tablaDone tablaInProgress:tablaInProgress"/>
-                                       </p:commandButton>
-                                   </p:column>
-                                    <p:column headerText="DONE">
-                                        <h:outputText value="#{tareaDone.descripcion}" />
-                                    </p:column>
-                                </p:dataTable>
-                            </h:form>
-                        </div>
+                            <div class="col-4" style="margin-top: 30px">
+                                <h:form id="tablaInProgress">
+                                    <p:dataTable id="tablaInProgress" var="tareaIn" value="#{listaTareasMB.listaTareasIn}" selectionMode="single" selection="#{listaTareasMB.tareaSeleccionada}" rowKey="#{tareaIn.idTarea}">
+                                        <f:facet name="header">
+                                        </f:facet>
+                                        <p:column style="width: 60px;">
+                                            <p:commandButton action="#{listaTareasMB.setEstadoTareaInprogressToDo()}" oncomplete="" icon="leftbtn">
+                                                <f:setPropertyActionListener value="#{tareaIn}" target="#{listaTareasMB.tareaSeleccionada}" />
+                                                <f:ajax event="click" execute="@form" render="tablaToDo:tablaToDo tablaInProgress"/>
+                                           </p:commandButton>
+                                       </p:column>
+                                        <p:column headerText="IN PROGRESS">
+                                            <h:outputText value="#{tareaIn.descripcion}" />
+                                        </p:column>
+                                        <p:column style="width: 60px;">
+                                            <p:commandButton action="#{listaTareasMB.setEstadoTareaInprogressDone()}" oncomplete="" icon="rightbtn" >
+                                                <f:setPropertyActionListener value="#{tareaIn}" target="#{listaTareasMB.tareaSeleccionada}" />
+                                                <f:ajax event="click" execute="@form" render="tablaDone:tablaDone tablaInProgress"/>
+                                           </p:commandButton>
+                                       </p:column>
+                                    </p:dataTable>
+                                </h:form>
+                            </div>
+                            <div  class="col-4" style="margin-top: 30px">
+                                <h:form id="tablaDone">
+                                    <p:dataTable id="tablaDone" var="tareaDone" value="#{listaTareasMB.listaTareasDone}" selectionMode="single" selection="#{listaTareasMB.tareaSeleccionada}" rowKey="#{tareaDone.idTarea}">
+                                        <f:facet name="header">
+                                        </f:facet>
+                                        <p:column style="width: 60px;">
+                                            <p:commandButton action="#{listaTareasMB.setEstadoTareaToDoInprogress()}" oncomplete="" image="leftbtn">
+                                                <f:setPropertyActionListener value="#{tareaDone}" target="#{listaTareasMB.tareaSeleccionada}" />
+                                                <f:ajax event="click" execute="@form" render="tablaDone tablaInProgress:tablaInProgress"/>
+                                           </p:commandButton>
+                                       </p:column>
+                                        <p:column headerText="DONE">
+                                            <h:outputText value="#{tareaDone.descripcion}" />
+                                        </p:column>
+                                    </p:dataTable>
+                                </h:form>
+                            </div>
                     </div>
                 </div>
             </ui:define>

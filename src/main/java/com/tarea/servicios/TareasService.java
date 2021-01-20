@@ -9,12 +9,20 @@ import com.tarea.excepcion.DBException;
 import com.tarea.model.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 
-/**
- *
- * @author user
- */
+//EJB DE SESION SIN ESTADO
+@Stateless
 public class TareasService {
+    public TareasService(){
+        
+    }
+    @PostConstruct
+    public void iniciar(){
+        
+    }
+    
     public void altaTarea(Tarea tarea,int idUser) throws DBException{
         DB.addTarea(tarea, idUser);
     }
@@ -68,5 +76,18 @@ public class TareasService {
             }
         }
         return userEncontrado.getId();
+    }
+    
+    public int getUltimaIdTarea(){
+        return DB.getUltimoIdTarea();
+    }
+    public int getUltimaIdUsuario(){
+        return DB.getUltimoIdUsuario();
+    }
+    public void setUltimoIdTarea(int newId){
+        DB.setUltimoIdTarea(++newId);
+    }
+    public void setUltimoIdUsuario(int newId){
+        DB.setUltimoIdUsuario(++newId);
     }
 }

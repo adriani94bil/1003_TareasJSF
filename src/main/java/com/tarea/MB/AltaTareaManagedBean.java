@@ -10,21 +10,22 @@ import com.tarea.model.*;
 import com.tarea.servicios.*;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-/**
- *
- * @author user
- */
 @Named(value = "altaTareaMB")
 @RequestScoped
 public class AltaTareaManagedBean {
 
     private Tarea tarea;
+    
+    @EJB
+    private TareasService tareaService;
+    
     @Inject
     private UsuarioManagedBean usuarioMB;
     
@@ -39,7 +40,10 @@ public class AltaTareaManagedBean {
     public void iniciar(){
         this.usuarioLogeado=usuarioMB.getUsuarioLog();
         this.tarea=new Tarea();
+        tareaService.setUltimoIdTarea(tareaService.getUltimaIdTarea());
+        tarea.setIdTarea(tareaService.getUltimaIdTarea());
         tarea.setEstado(Estado.TODO);
+        tarea.setIdUsuario(usuarioLogeado.getId());
         
     }
     public Tarea getTarea() {
@@ -67,7 +71,6 @@ public class AltaTareaManagedBean {
     //Accion
     
     public String altaTarea(){
-        TareasService tareaService=new TareasService();
         FacesContext ctx=FacesContext.getCurrentInstance();
         try {
             tareaService.altaTarea(tarea, tarea.getIdUsuario());
