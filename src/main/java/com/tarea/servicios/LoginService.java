@@ -31,7 +31,7 @@ public class LoginService {
         Usuario userEncontrado=null;
         //Buscamos Usuario
         for (Usuario u:usuarios) {
-            if (u.getEmail().equals(email)) {
+            if (u.getEmail().equals(email) && u.getPassword().equals(clave)) {
                 userEncontrado=u;
                 break;
             }
