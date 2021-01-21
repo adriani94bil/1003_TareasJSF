@@ -49,12 +49,12 @@ public class UsuarioManagedBean implements Serializable {
         this.clave = clave;
     }
 
-    public String getUser() {
+    public String getEmail() {
         return email;
     }
 
-    public void setUser(String user) {
-        this.email = user;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public LoginService getLoginService() {
@@ -93,6 +93,9 @@ public class UsuarioManagedBean implements Serializable {
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         if (session != null) {
             session.invalidate();
+            this.usuarioLog=null;
+            this.email="";
+            this.clave="";
         }
         return "login?faces-redirect=true";
         

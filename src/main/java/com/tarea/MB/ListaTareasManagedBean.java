@@ -9,6 +9,7 @@ import com.tarea.excepcion.DBException;
 import com.tarea.model.Estado;
 import com.tarea.model.Tarea;
 import com.tarea.model.Usuario;
+import com.tarea.servicios.CalculadoraSessionBeanLocal;
 import com.tarea.servicios.TareasService;
 import java.util.Collection;
 import java.util.logging.Logger;
@@ -37,6 +38,8 @@ public class ListaTareasManagedBean {
     @EJB
     private TareasService tareaServicio;//= new Treas-service();
     
+    @EJB
+    private CalculadoraSessionBeanLocal calculadoraService;
     
     @Inject
     private UsuarioManagedBean usuarioMB;
@@ -55,6 +58,7 @@ public class ListaTareasManagedBean {
         this.listaTareasToDo=tareaServicio.getTareasByUserToDo(listaTareas);
         this.listaTareasIn=tareaServicio.getTareasByUserInProgress(listaTareas);
         this.listaTareasDone=tareaServicio.getTareasByUserDone(listaTareas);
+        System.out.println("....suma.."+calculadoraService.suma(3, 9));
         
     }
 
