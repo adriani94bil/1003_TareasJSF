@@ -11,16 +11,27 @@ import java.util.ArrayList;
 import java.util.Collection;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 //EJB DE SESION SIN ESTADO
 @Stateless
 public class TareasService {
+    //inyecta un nuevo EntityManager que se construye a partir de los datos del persistence.xml
+    @PersistenceContext(unitName = "tareasPU") private EntityManager em;
+    
     public TareasService(){
         
     }
     @PostConstruct
     public void iniciar(){
         
+    }
+    
+    public TareaJPA getTareaJPA(Integer id){
+        //Hace un select*from tareas where idTarea=id
+        TareaJPA t= em.find(TareaJPA.class, id);
+        return t;
     }
     
     public void altaTarea(Tarea tarea,int idUser) throws DBException{

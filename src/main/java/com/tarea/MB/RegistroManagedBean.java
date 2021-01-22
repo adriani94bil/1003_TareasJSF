@@ -5,8 +5,15 @@
  */
 package com.tarea.MB;
 
+import com.tarea.model.Estado;
+import com.tarea.model.Tarea;
+import com.tarea.model.Usuario;
+import com.tarea.servicios.RegisterService;
+import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 
 //Lo pongo como request pero al final lo logeare
 
@@ -14,10 +21,24 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class RegistroManagedBean {
 
-    /**
-     * Creates a new instance of RegistroManagedBean
-     */
+    private Usuario user;
+    
+    @EJB
+    private RegisterService registroService;
+    
+    //Injecto usuario para facilitar el login;
+    @Inject
+    private UsuarioManagedBean usuarioMB;
+    
+    
     public RegistroManagedBean() {
+        
+    }
+    @PostConstruct
+    public void iniciar(){
+        this.user=new Usuario();
+        user.setId(111111);
+        
     }
     
 }

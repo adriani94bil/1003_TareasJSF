@@ -38,12 +38,11 @@ public class RegisterService {
                 break;
             }
         }
-        //si existe añadir a session
+        //al final la session se la añado en el loginservice
         if (userEncontrado!=null) {
             throw new LoginException("El usuario ya existe, vaya a login");
         } else {
             DB.addUsuario(u);
-            session.setAttribute("usuario", userEncontrado);
             
         }
     }

@@ -8,6 +8,7 @@ package com.tarea.MB;
 import com.tarea.excepcion.DBException;
 import com.tarea.model.Estado;
 import com.tarea.model.Tarea;
+import com.tarea.model.TareaJPA;
 import com.tarea.model.Usuario;
 import com.tarea.servicios.CalculadoraSessionBeanLocal;
 import com.tarea.servicios.TareasService;
@@ -59,7 +60,10 @@ public class ListaTareasManagedBean {
         this.listaTareasIn=tareaServicio.getTareasByUserInProgress(listaTareas);
         this.listaTareasDone=tareaServicio.getTareasByUserDone(listaTareas);
         System.out.println("....suma.."+calculadoraService.suma(3, 9));
-        
+        System.out.println("******************************************************");
+        TareaJPA t=tareaServicio.getTareaJPA(1);
+        System.out.println("Tarea es..........."+t.getDescripcion());
+        System.out.println("****************************************************");
     }
 
     public Collection<Tarea> getListaTareas() {
